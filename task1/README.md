@@ -104,7 +104,7 @@ pip install torch==2.4.0+cu121 torchvision==0.19.0+cu121 --index-url https://dow
 
 测试过程已集成在 `train_and_evaluate.py` 中，脚本会自动在训练后评估最佳预训练模型和从零训练模型，无需单独运行测试脚本。
 
-如果需要手动测试模型权重，可以编写单独脚本，加载 `best_pretrained_model.pth` 并调用 `test_model` 函数。可以参考这个脚本：
+如果需要手动测试模型权重，可以编写单独脚本，例如加载 `best_pretrained_model.pth` 并调用 `test_model` 函数。可以参考这个脚本：
 
 ```python
 import torch
@@ -129,10 +129,12 @@ print(f"Test Accuracy: {acc:.2f}%")
 
 ### 3. 模型权重下载
 
-训练好的模型权重（`best_pretrained_model.pth`）可通过实验生成，或从以下链接下载预训练权重：
+训练好的模型权重（`best_pretrained_model.pth`，`scratch_model.pth`）可通过实验生成，或从以下链接下载预训练权重：
 
 - **百度云盘链接**:
   [https://pan.baidu.com/s/1kz_0LN4F4N37a-agWmtqIg?pwd=best](https://pan.baidu.com/s/1kz_0LN4F4N37a-agWmtqIg?pwd=best)  
+  **提取码**: best
+  [https://pan.baidu.com/s/19CL6xRFwGX9U7ndIn5de4w?pwd=best](https://pan.baidu.com/s/19CL6xRFwGX9U7ndIn5de4w?pwd=best) 
   **提取码**: best
 
 **说明**：
@@ -187,8 +189,7 @@ TensorBoard 可用于查看训练过程中的损失和准确率曲线，具体�
 - 权重衰减：`[0.0001, 0.001]`
 
 **结果分析**：
-- 预训练模型最佳准确率 97.21%（`lr=0.01, epochs=30, bs=16, wd=0.001`）。
-- 从零训练最高准确率 79.0%（`lr=0.001, epochs=30, bs=16, wd=0.001`）。
+- 预训练模型最高验证准确率 97.21% 和测试准确率 96.37%；明显优于从零训练的 79.0% 和 69.39%。
 - 箱线图（`plots` 目录）显示学习率对性能影响最大，`lr=0.01` 适合预训练，而 `lr=0.001` 更适合从零训练。
 
 ## 常见问题
