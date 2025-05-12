@@ -220,6 +220,7 @@ def run_experiments(train_loaders, test_loaders, learning_rates, num_epochs_list
     optimizer = optim.SGD(model_scratch.parameters(), lr=best_params['lr'], momentum=0.9, weight_decay=best_params['weight_decay'])
     train_model(model_scratch, train_loaders[best_params['batch_size']], test_loaders[best_params['batch_size']], criterion, optimizer, best_params['epochs'], device, writer, run_name)
     scratch_acc = test_model(model_scratch, test_loaders[best_params['batch_size']], criterion, device)
+    torch.save(model_scratch.state_dict(), 'scratch_model.pth')
     writer.close()
 
     print(f"\nScratch Model Accuracy: {scratch_acc:.2f}%")
