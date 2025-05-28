@@ -1,13 +1,9 @@
 # training schedule
 train_cfg = dict(
     type='EpochBasedTrainLoop',
-    max_epochs=50,  # 增加到 50 个 epoch
-    val_interval=1  # 每 1 个 epoch 验证一次
+    max_epochs=50,  
+    val_interval=1  
 )
-
-# val_cfg = dict(
-#     type='ValLoop'
-# )
 
 val_cfg = dict(
     type='ValLoop',
@@ -29,7 +25,7 @@ param_scheduler = [
     # 使用 CosineAnnealingLR 平滑衰减学习率
     dict(
         type='CosineAnnealingLR',
-        T_max=50,  # 匹配 50 个 epoch
+        T_max=50, 
         eta_min=5e-6,  # 提高最小学习率，保持后期学习能力
         by_epoch=True,
         begin=0,
@@ -41,11 +37,10 @@ param_scheduler = [
 optim_wrapper = dict(
     type='OptimWrapper',
     optimizer=dict(
-        type='Adam',  # 保持 Adam 优化器
-        lr=0.0002,  # 提高学习率，加速收敛
-        betas=(0.9, 0.999),  # 默认 Adam 参数
-        weight_decay=0.0005  # 保持正则化
-    ),
+        type='Adam',  # Adam 优化器
+        lr=0.0002,  
+        betas=(0.9, 0.999), 
+        weight_decay=0.0005 
     clip_grad=dict(
         max_norm=10.0,  # 保持梯度裁剪
         norm_type=2
