@@ -1,7 +1,7 @@
 # dataset settings
 dataset_type = 'CocoDataset'
 # data_root = 'data/coco/'
-data_root = '/home/huangyixu/data/VOCdevkit/VOC2012/'
+data_root = './data/VOCdevkit/VOC2012/'
 
 metainfo = {
     'classes': (
